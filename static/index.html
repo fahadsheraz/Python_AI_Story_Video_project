@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Story Video Project</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>AI Story Video Project</h1>
+        <p>Story segmentation and review workspace</p>
+      </div>
+      <div id="projectStatus" class="status-pill">No project</div>
+    </header>
+
+    <main class="layout">
+      <section class="panel input-panel">
+        <div class="panel-header">
+          <h2>Story Input</h2>
+        </div>
+        <label for="titleInput">Title</label>
+        <input id="titleInput" type="text" value="Untitled Story">
+
+        <label for="storyInput">Story</label>
+        <textarea id="storyInput" rows="14" placeholder="Paste your story here..."></textarea>
+
+        <button id="segmentButton" class="primary-button">Segment Story</button>
+      </section>
+
+      <section class="panel review-panel">
+        <div class="panel-header">
+          <h2>Review Segmentation</h2>
+          <div class="actions">
+            <button id="saveButton" class="secondary-button" disabled>Save Draft</button>
+            <button id="confirmButton" class="primary-button" disabled>Confirm Segmentation</button>
+            <button id="colabJobButton" class="secondary-button" disabled>Prepare Colab Job</button>
+          </div>
+        </div>
+
+        <div id="summary" class="summary">
+          Add a story and click Segment Story.
+        </div>
+        <div id="jobStatus" class="summary hidden"></div>
+
+        <div id="charactersEditor" class="editor-section"></div>
+        <div id="scenesEditor" class="editor-section"></div>
+      </section>
+    </main>
+
+    <template id="characterTemplate">
+      <article class="item-row character-row">
+        <input data-field="name" type="text" placeholder="Character name">
+        <input data-field="role" type="text" placeholder="Role">
+        <textarea data-field="description" rows="2" placeholder="Description"></textarea>
+        <button class="danger-button" data-action="remove-character">Remove</button>
+      </article>
+    </template>
+
+    <template id="sceneTemplate">
+      <article class="scene-card">
+        <div class="scene-title-row">
+          <input data-field="title" type="text" placeholder="Scene title">
+          <input data-field="location" type="text" placeholder="Location">
+        </div>
+        <label>Narration</label>
+        <textarea data-field="narration" rows="3"></textarea>
+        <label>Characters in this scene</label>
+        <input data-field="characters" type="text" placeholder="Ali, Sara">
+        <div class="dialogues"></div>
+        <div class="scene-actions">
+          <button class="secondary-button" data-action="add-dialogue">Add Dialogue</button>
+          <button class="danger-button" data-action="remove-scene">Remove Scene</button>
+        </div>
+      </article>
+    </template>
+
+    <template id="dialogueTemplate">
+      <div class="dialogue-row">
+        <input data-field="speaker" type="text" placeholder="Speaker">
+        <textarea data-field="text" rows="2" placeholder="Dialogue text"></textarea>
+        <button class="danger-button" data-action="remove-dialogue">Remove</button>
+      </div>
+    </template>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,2 @@
+# This MVP uses only Python standard library modules.
+# No packages are required right now.
